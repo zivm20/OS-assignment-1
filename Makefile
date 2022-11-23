@@ -1,38 +1,26 @@
 CXX=gcc
-CXXFLAGS= -Werror -Wsign-conversion
+CXXFLAGS= -Werror 
 
 run: cmp codec1 codec2 copy decode encode
 
 cmp: cmp.c
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-demo: Demo.o $(OBJECTS) 
+codec1: codec1.c codec.h
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-%.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) --compile $< -o $@
+codec2: codec2.c codec.h
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-$(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) --compile $< -o $@
+copy: copy.c
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# Renana Rimon
-StudentTest1.cpp:  
-	curl https://raw.githubusercontent.com/renanarimon/cpp_5b_test/master/Test.cpp > $@
+decode: decode.c
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# Shauli Taragin
-StudentTest2.cpp: 
-	curl https://raw.githubusercontent.com/ShauliTaragin/Orgchart-A/main/Test.cpp > $@
+encode: encode.c
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# Dvir Gev
-StudentTest3.cpp: 
-	curl https://raw.githubusercontent.com/dvirGev/CPP--Ex5-par1/main/Test.cpp > $@
-
-tidy:
-	clang-tidy $(SOURCES) $(TIDY_FLAGS) --
-
-valgrind: test
-	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./test 2>&1 | { egrep "lost| at " || true; }
 
 clean:
-	rm -f $(OBJECTS) *.o test* 
-	rm -f StudentTest*.cpp
+	rm -f *.o cmp codec1 codec2 copy decode encode
