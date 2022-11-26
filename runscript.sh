@@ -1,0 +1,20 @@
+#!/bin/bash
+echo '321' > f1.txt;
+echo '1234' > f2.txt;
+ln -s f1.txt f1_link.txt;
+make;
+./cmp f1.txt f2.txt;
+./copy f2.txt f3.txt;
+./cmp f2.txt f3.txt;
+./copy f1.txt f3.txt;
+./cmp f3.txt f2.txt;
+./copy f1_link.txt f2.txt;
+./copy f1_link.txt f4.txt;
+./cmp f1.txt f2.txt;
+./copy f1_link.txt f2.txt -l;
+./copy f1_link.txt f5.txt -l;
+./encode codec1 "hELLo 2 yoU!";
+./decode codec1 "HellO 2 YOu!";
+./encode codec2 "hELLo 2 yoU!";
+./decode codec2 $(./encode codec2 "hELLo 2 yoU!");
+make clean;

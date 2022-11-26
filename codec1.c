@@ -8,15 +8,18 @@ int encode(char* src, char* dst, int len){
                 dst[i] = tolower(src[i]); 
             }
             else{
-                dst[i] = tolower(src[i]); 
+                dst[i] = toupper(src[i]); 
             }
         }
-            
+        else{
+            dst[i] = src[i];
+        }
     }
     return 1;
 }
 
 int decode(char* src, char* dst, int len){
+    //decode in this case is exactly like encoding again
     return encode(src,dst,len);
 }
 

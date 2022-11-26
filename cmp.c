@@ -18,7 +18,7 @@ int isSame(const char* f1, const char* f2){
         c1 = fgetc(fp1);
         c2 = fgetc(fp2);
 
-    }while(c2 != EOF && c1 != EOF && c1 == c2);
+    } while(c2 != EOF && c1 != EOF && c1 == c2);
     fclose(fp1);
     fclose(fp2);
     if(c1 == EOF && c2==EOF){

@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "stat.h": "c",
-        "codec.h": "c"
+        "codec.h": "c",
+        "dlfcn.h": "c",
+        "stdio.h": "c"
     }
 }
