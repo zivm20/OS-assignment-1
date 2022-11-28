@@ -14,8 +14,8 @@ commands (ignore #):
     ./copy f1_link.txt f2.txt #symlink to normal file
     ./copy f1_link.txt f4.txt #symlink to nonexistant file
     ./cmp f1.txt f2.txt #now they should be the same
-    ./copy f1_link.txt f2.txt -l #symlink to normal file with -l
-    ./copy f1_link.txt f5.txt -l #symlink to nonexistant file with -l
+    ./copy f1_link.txt f2.txt -l #copy path to f1.txt into f2.txt
+    ./copy f1_link.txt f5.txt -l #copy path to f1.txt into a new file f5.txt
     ./encode codec1 "hELLo 2 yoU!" 
     ./decode codec1 "HellO 2 YOu!"
     ./encode codec2 "hELLo 2 yoU!"
